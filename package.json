@@ -3,5 +3,8 @@
   "version": "0.0.1",
   "main": "dist/index.js",
   "author": "Romeo Van Snick <romeo@romeovansnick.be>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "prettier": "^3.2.4"
+  }
 }
