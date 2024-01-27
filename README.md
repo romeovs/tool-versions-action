@@ -6,7 +6,7 @@ Add a step to you workflow to read the versions from `.tool-versions`:
 
 ```yaml
 - name: Read .tool-versions
-  uses: romeovs/tool-versions-action@v1
+  uses: romeovs/tool-versions-action@v3
   id: versions
 ```
 
@@ -39,7 +39,7 @@ jobs:
   steps:
     - uses: actions/checkout@v3
     - name: Read .tool-versions
-      uses: romeovs/tool-versions-action@v1
+      uses: romeovs/tool-versions-action@v3
       id: versions
     - uses: pnpm/action-setup@v2
       name: Install pnpm ${{ steps.versions.outputs.pnpm }}
