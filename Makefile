@@ -9,7 +9,8 @@ log = printf "$(__blue)$(title): $(__normal) %s\\n"
 .PHONY: build
 build:
 	@$(log) "Building..."
-	@$(bin)/ncc build --out dist/
+	@rm -rf dist/
+	@$(bin)/ncc build src/index.ts --out dist/
 
 .PHONY: format
 format:
