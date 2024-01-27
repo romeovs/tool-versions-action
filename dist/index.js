@@ -24727,7 +24727,6 @@ catch (err) {
 }
 async function run() {
     const path = _actions_core__WEBPACK_IMPORTED_MODULE_1__.getInput("path") || ".tool-versions";
-    console.log(path);
     _actions_core__WEBPACK_IMPORTED_MODULE_1__.debug(`Loading versions from ${path}`);
     const tools = await read(path);
     for (const tool of tools) {
@@ -24740,7 +24739,6 @@ async function read(path) {
     return content
         .split("\n")
         .map(function (line) {
-        console.log(`'${line.trim()}'`);
         if (line.trim() === "") {
             return null;
         }

@@ -13,7 +13,6 @@ try {
 
 async function run() {
 	const path = core.getInput("path") || ".tool-versions"
-	console.log(path)
 
 	core.debug(`Loading versions from ${path}`)
 	const tools = await read(path)
