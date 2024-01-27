@@ -1,0 +1,10 @@
+name: Tool Versions
+description: Output version numbers from .tool-versions file
+inputs:
+  path:
+    description: Path of .tool-versions file
+    default: .tool-versions
+    required: true
+runs:
+  using: node20
+  main: dist/index.js
