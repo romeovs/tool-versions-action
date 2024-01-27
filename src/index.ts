@@ -12,7 +12,8 @@ try {
 }
 
 async function run() {
-	const path = core.getInput("path")
+	const path = core.getInput("path") || ".tool-versions"
+	console.log(path)
 
 	core.debug(`Loading versions from ${path}`)
 	const tools = await read(path)
@@ -30,14 +31,20 @@ type Tool = {
 
 async function read(path: string): Promise<Tool[]> {
 	const content = await fs.readFile(path, "utf-8")
-	return content.split("\n").map(function (line) {
-		const [name, version] = line.trim().split(/\s+/)
-		if (!name || !version) {
-			throw new Error(`Cannot parse line in ${path}: ${line}`)
-		}
-		return {
-			name: name.trim(),
-			version: version.trim(),
-		}
-	})
+	return content
+		.split("\n")
+		.map(function (line) {
+			if (line.trim() === "") {
+				return null
+			}
+			const [name, version] = line.trim().split(/\s+/)
+			if (!name || !version) {
+				throw new Error(`Cannot parse line in ${path}: ${line}`)
+			}
+			return {
+				name: name.trim(),
+				version: version.trim(),
+			}
+		})
+		.filter((x): x is Tool => x !== null)
 }
